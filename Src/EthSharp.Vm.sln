@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EthSharp.Vm.Core", "EthSharp.Vm.Core\EthSharp.Vm.Core.csproj", "{82651420-8A4B-44B5-9C21-4B4F5D260978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EthSharp.Vm.Core.Tests", "EthSharp.Vm.Core.Tests\EthSharp.Vm.Core.Tests.csproj", "{7D707690-BA98-45CD-8CDA-459D2BAC10FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFDA79AE-4F83-4479-B805-0887894E6528}"
+	ProjectSection(SolutionItems) = preProject
+		EthSharp.Vm.vsmdi = EthSharp.Vm.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = EthSharp.Vm.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82651420-8A4B-44B5-9C21-4B4F5D260978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82651420-8A4B-44B5-9C21-4B4F5D260978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82651420-8A4B-44B5-9C21-4B4F5D260978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82651420-8A4B-44B5-9C21-4B4F5D260978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D707690-BA98-45CD-8CDA-459D2BAC10FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D707690-BA98-45CD-8CDA-459D2BAC10FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D707690-BA98-45CD-8CDA-459D2BAC10FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D707690-BA98-45CD-8CDA-459D2BAC10FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
