@@ -14,10 +14,7 @@
 
             var result = value.ToBytes();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(32, result.Length);
-
-            Assert.IsTrue(result.All(b => b == 0x00));
+            AreEqual(result, new byte[] {});
         }
 
         [TestMethod]
@@ -28,13 +25,7 @@
             var newvalue = value.Add(1);
             var result = newvalue.ToBytes();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(32, result.Length);
-
-            for (int k = 0; k < 31; k++)
-                Assert.AreEqual(0x00, result[k]);
-
-            Assert.AreEqual(0x01, result[31]);
+            AreEqual(result, new byte[] { 0x01 });
         }
 
         [TestMethod]
@@ -73,6 +64,23 @@
                     Assert.AreEqual(0x00, result[k]);
                 else
                     Assert.AreEqual(0x01, result[k]);
+        }
+
+        private static void AreEqual(byte[] values, byte[] expected)
+        {
+            Assert.IsNotNull(values);
+
+            var vl = values.Length;
+
+            Assert.AreEqual(32, vl);
+
+            var el = expected.Length;
+
+            for (int k = 0; k < vl - el; k++)
+                Assert.AreEqual(0x00, values[k]);
+
+            for (int k = 0; k < el; k++)
+                Assert.AreEqual(values[vl - el + k], expected[k]);
         }
     }
 }
