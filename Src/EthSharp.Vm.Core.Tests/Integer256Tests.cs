@@ -61,7 +61,17 @@
             AreEqual(result, new byte[] { 0x01, 0xff, 0xff, 0xff, 0xfe });
         }
 
-        private static void AreEqual(byte[] values, byte[] expected)
+        [TestMethod]
+        public void NegateOne()
+        {
+            Integer256 value = new Integer256().Add(1).Negate();
+
+            var result = value.ToBytes();
+
+            AreEqual(result, new byte[] { }, true);
+        }
+
+        private static void AreEqual(byte[] values, byte[] expected, bool onefilled = false)
         {
             Assert.IsNotNull(values);
 
@@ -71,8 +81,12 @@
 
             var el = expected.Length;
 
-            for (int k = 0; k < vl - el; k++)
-                Assert.AreEqual(0x00, values[k]);
+            if (onefilled)
+                for (int k = 0; k < vl - el; k++)
+                    Assert.AreEqual(0xff, values[k]);
+            else
+                for (int k = 0; k < vl - el; k++)
+                    Assert.AreEqual(0x00, values[k]);
 
             for (int k = 0; k < el; k++)
                 Assert.AreEqual(values[vl - el + k], expected[k]);

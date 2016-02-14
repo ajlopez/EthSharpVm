@@ -20,6 +20,18 @@
             this.values = values;
         }
 
+        public Integer256 Negate()
+        {
+            var newvalues = new UInt32[size];
+
+            for (int k = 0; k < size; k++)
+                newvalues[k] = ~this.values[k];
+
+            Add(newvalues, 1);
+
+            return new Integer256(newvalues);
+        }
+
         public Integer256 Add(uint value)
         {
             var newvalues = new UInt32[size];
