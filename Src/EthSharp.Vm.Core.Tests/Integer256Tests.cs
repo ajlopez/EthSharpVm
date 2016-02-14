@@ -72,6 +72,16 @@
         }
 
         [TestMethod]
+        public void NegateTwo()
+        {
+            Integer256 value = new Integer256().Add(1).Add(1).Negate();
+
+            var result = value.ToBytes();
+
+            AreEqual(result, new byte[] { 0xfe }, true);
+        }
+
+        [TestMethod]
         public void AddOneToOne()
         {
             var one = new Integer256().Add(1);
