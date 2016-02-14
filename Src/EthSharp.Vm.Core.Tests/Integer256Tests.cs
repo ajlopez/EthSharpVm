@@ -50,6 +50,17 @@
             AreEqual(result, new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00 });
         }
 
+        [TestMethod]
+        public void MaxUInt32TwiceToBytes()
+        {
+            Integer256 value = new Integer256();
+
+            var newvalue = value.Add(UInt32.MaxValue).Add(UInt32.MaxValue);
+            var result = newvalue.ToBytes();
+
+            AreEqual(result, new byte[] { 0x01, 0xff, 0xff, 0xff, 0xfe });
+        }
+
         private static void AreEqual(byte[] values, byte[] expected)
         {
             Assert.IsNotNull(values);
