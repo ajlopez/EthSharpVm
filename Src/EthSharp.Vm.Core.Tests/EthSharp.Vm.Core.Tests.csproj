@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Integer256Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EthSharp.Vm.Core\EthSharp.Vm.Core.csproj">
