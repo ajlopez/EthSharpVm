@@ -36,16 +36,7 @@
             var newvalue = value.Add(UInt32.MaxValue);
             var result = newvalue.ToBytes();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(32, result.Length);
-
-            for (int k = 0; k < 28; k++)
-                Assert.AreEqual(0x00, result[k]);
-
-            Assert.AreEqual(0xff, result[28]);
-            Assert.AreEqual(0xff, result[29]);
-            Assert.AreEqual(0xff, result[30]);
-            Assert.AreEqual(0xff, result[31]);
+            AreEqual(result, new byte[] { 0xff, 0xff, 0xff, 0xff });
         }
 
         [TestMethod]
@@ -56,14 +47,7 @@
             var newvalue = value.Add(UInt32.MaxValue).Add(1);
             var result = newvalue.ToBytes();
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(32, result.Length);
-
-            for (int k = 0; k < 32; k++)
-                if (k != 27)
-                    Assert.AreEqual(0x00, result[k]);
-                else
-                    Assert.AreEqual(0x01, result[k]);
+            AreEqual(result, new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00 });
         }
 
         private static void AreEqual(byte[] values, byte[] expected)
