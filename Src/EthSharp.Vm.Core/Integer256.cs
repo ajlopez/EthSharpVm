@@ -22,9 +22,10 @@
 
         public Integer256 Add(uint value)
         {
-            var newvalues = new UInt32[8];
+            var newvalues = new UInt32[size];
+            Array.Copy(this.values, newvalues, size);
 
-            newvalues[0] = values[0] + value;
+            Add(newvalues, value, 0);
 
             return new Integer256(newvalues);
         }
@@ -49,6 +50,18 @@
             }
 
             return bytes;
+        }
+
+        private static void Add(UInt32[] values, uint value, int offset = 0)
+        {
+            if (offset >= size)
+                return;
+
+            UInt64 newvalue = (UInt64)values[offset] + value;
+            values[offset] = (UInt32)newvalue;
+
+            if (newvalue >> 32 != 0)
+                Add(values, 1, offset + 1);
         }
     }
 }

@@ -56,5 +56,23 @@
             Assert.AreEqual(0xff, result[30]);
             Assert.AreEqual(0xff, result[31]);
         }
+
+        [TestMethod]
+        public void MaxUInt32PlusOneToBytes()
+        {
+            Integer256 value = new Integer256();
+
+            var newvalue = value.Add(UInt32.MaxValue).Add(1);
+            var result = newvalue.ToBytes();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(32, result.Length);
+
+            for (int k = 0; k < 32; k++)
+                if (k != 27)
+                    Assert.AreEqual(0x00, result[k]);
+                else
+                    Assert.AreEqual(0x01, result[k]);
+        }
     }
 }
