@@ -71,6 +71,17 @@
             AreEqual(result, new byte[] { }, true);
         }
 
+        [TestMethod]
+        public void AddOneToOne()
+        {
+            var one = new Integer256().Add(1);
+            var value = one.Add(one);
+
+            var result = value.ToBytes();
+
+            AreEqual(result, new byte[] { 0x02 });
+        }
+
         private static void AreEqual(byte[] values, byte[] expected, bool onefilled = false)
         {
             Assert.IsNotNull(values);

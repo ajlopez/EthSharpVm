@@ -42,6 +42,17 @@
             return new Integer256(newvalues);
         }
 
+        public Integer256 Add(Integer256 value)
+        {
+            var newvalues = new UInt32[size];
+            Array.Copy(this.values, newvalues, size);
+
+            for (int k = 0; k < size; k++)
+                Add(newvalues, value.values[k], k);
+
+            return new Integer256(newvalues);
+        }
+
         public byte[] ToBytes()
         {
             var bytes = new byte[32];
