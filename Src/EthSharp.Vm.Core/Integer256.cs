@@ -53,6 +53,11 @@
             return new Integer256(newvalues);
         }
 
+        public Integer256 Subtract(Integer256 value)
+        {
+            return this.Add(value.Negate());
+        }
+
         public byte[] ToBytes()
         {
             var bytes = new byte[32];
