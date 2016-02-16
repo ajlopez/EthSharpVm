@@ -114,6 +114,28 @@
             AreEqual(result, new byte[] { }, true);
         }
 
+        [TestMethod]
+        public void EqualsAndHash()
+        {
+            var zero = new Integer256();
+            var one1 = new Integer256().Add(1);
+            var one2 = new Integer256().Add(1);
+            var minusone = one1.Negate();
+
+            Assert.IsFalse(zero.Equals(null));
+            Assert.IsFalse(zero.Equals("Foo"));
+            Assert.IsFalse(zero.Equals(0));
+            Assert.IsFalse(zero.Equals(one1));
+            Assert.IsFalse(zero.Equals(minusone));
+            Assert.IsFalse(one1.Equals(minusone));
+
+            Assert.IsTrue(zero.Equals(zero));
+            Assert.IsTrue(one1.Equals(one2));
+            Assert.IsTrue(one2.Equals(one1));
+
+            Assert.AreEqual(one1.GetHashCode(), one2.GetHashCode());
+        }
+
         private static void AreEqual(byte[] values, byte[] expected, bool onefilled = false)
         {
             Assert.IsNotNull(values);

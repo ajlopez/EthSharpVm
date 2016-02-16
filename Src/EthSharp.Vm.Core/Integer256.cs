@@ -58,6 +58,33 @@
             return this.Add(value.Negate());
         }
 
+        public override int GetHashCode()
+        {
+            int hash = 0;
+
+            for (int k = 0; k < size; k++)
+                hash = hash * 7 + this.values[k].GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Integer256))
+                return false;
+
+            if (obj == this)
+                return true;
+
+            var value = (Integer256)obj;
+
+            for (int k = 0; k < size; k++)
+                if (this.values[k] != value.values[k])
+                    return false;
+
+            return true;
+        }
+
         public byte[] ToBytes()
         {
             var bytes = new byte[32];
