@@ -103,6 +103,17 @@
             AreEqual(result, new byte[] { });
         }
 
+        [TestMethod]
+        public void SubtractOneFromZero()
+        {
+            var zero = new Integer256();
+            var value = zero.Subtract(new Integer256().Add(1));
+
+            var result = value.ToBytes();
+
+            AreEqual(result, new byte[] { }, true);
+        }
+
         private static void AreEqual(byte[] values, byte[] expected, bool onefilled = false)
         {
             Assert.IsNotNull(values);
