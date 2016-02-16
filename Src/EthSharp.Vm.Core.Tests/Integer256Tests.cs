@@ -14,7 +14,7 @@
 
             var result = value.ToBytes();
 
-            AreEqual(result, new byte[] {});
+            AreEqual(result, new byte[] { });
         }
 
         [TestMethod]

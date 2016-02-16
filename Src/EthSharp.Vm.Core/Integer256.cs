@@ -7,24 +7,24 @@
 
     public class Integer256
     {
-        internal const int size = 8;
-        private UInt32[] values;
+        internal const int Size = 8;
+        private uint[] values;
 
         public Integer256()
         {
-            this.values = new UInt32[size];
+            this.values = new uint[Size];
         }
 
-        internal Integer256(UInt32[] values)
+        internal Integer256(uint[] values)
         {
             this.values = values;
         }
 
         public Integer256 Negate()
         {
-            var newvalues = new UInt32[size];
+            var newvalues = new uint[Size];
 
-            for (int k = 0; k < size; k++)
+            for (int k = 0; k < Size; k++)
                 newvalues[k] = ~this.values[k];
 
             Add(newvalues, 1);
@@ -34,8 +34,8 @@
 
         public Integer256 Add(uint value)
         {
-            var newvalues = new UInt32[size];
-            Array.Copy(this.values, newvalues, size);
+            var newvalues = new uint[Size];
+            Array.Copy(this.values, newvalues, Size);
 
             Add(newvalues, value, 0);
 
@@ -44,10 +44,10 @@
 
         public Integer256 Add(Integer256 value)
         {
-            var newvalues = new UInt32[size];
-            Array.Copy(this.values, newvalues, size);
+            var newvalues = new uint[Size];
+            Array.Copy(this.values, newvalues, Size);
 
-            for (int k = 0; k < size; k++)
+            for (int k = 0; k < Size; k++)
                 Add(newvalues, value.values[k], k);
 
             return new Integer256(newvalues);
@@ -62,8 +62,8 @@
         {
             int hash = 0;
 
-            for (int k = 0; k < size; k++)
-                hash = hash * 7 + this.values[k].GetHashCode();
+            for (int k = 0; k < Size; k++)
+                hash = (hash * 7) + this.values[k].GetHashCode();
 
             return hash;
         }
@@ -78,7 +78,7 @@
 
             var value = (Integer256)obj;
 
-            for (int k = 0; k < size; k++)
+            for (int k = 0; k < Size; k++)
                 if (this.values[k] != value.values[k])
                     return false;
 
@@ -90,9 +90,9 @@
             var bytes = new byte[32];
             int offset = 32;
 
-            for (int k = 0; k < size; k++)
+            for (int k = 0; k < Size; k++)
             {
-                UInt32 value = values[k];
+                uint value = this.values[k];
                 offset -= 4;
 
                 bytes[offset + 3] = (byte)(value & 0x00ff);
@@ -107,13 +107,13 @@
             return bytes;
         }
 
-        private static void Add(UInt32[] values, uint value, int offset = 0)
+        private static void Add(uint[] values, uint value, int offset = 0)
         {
-            if (offset >= size)
+            if (offset >= Size)
                 return;
 
-            UInt64 newvalue = (UInt64)values[offset] + value;
-            values[offset] = (UInt32)newvalue;
+            ulong newvalue = (ulong)values[offset] + value;
+            values[offset] = (uint)newvalue;
 
             if (newvalue >> 32 != 0)
                 Add(values, 1, offset + 1);

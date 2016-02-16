@@ -11,7 +11,7 @@
 
         public void Push(byte bt)
         {
-            UInt32[] values = new UInt32[Integer256.size];
+            uint[] values = new uint[Integer256.Size];
 
             values[0] = bt;
 
