@@ -7,7 +7,7 @@
 
     public class Integer256
     {
-        private const int size = 8;
+        internal const int size = 8;
         private UInt32[] values;
 
         public Integer256()
@@ -15,7 +15,7 @@
             this.values = new UInt32[size];
         }
 
-        private Integer256(UInt32[] values)
+        internal Integer256(UInt32[] values)
         {
             this.values = values;
         }
