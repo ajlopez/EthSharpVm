@@ -9,10 +9,12 @@
     {
         private Stack stack;
 
-        public Machine(Stack stack)
+        public Machine()
         {
-            this.stack = stack;
+            this.stack = new Stack();
         }
+
+        public Stack Stack { get { return this.stack; } }
 
         public void Execute(byte[] bytecodes)
         {

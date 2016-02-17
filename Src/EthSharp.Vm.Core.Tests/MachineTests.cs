@@ -9,12 +9,11 @@
         [TestMethod]
         public void PushByte()
         {
-            Stack stack = new Stack();
-            Machine machine = new Machine(stack);
+            Machine machine = new Machine();
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01 });
 
-            Assert.AreEqual(stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
         }
     }
 }
