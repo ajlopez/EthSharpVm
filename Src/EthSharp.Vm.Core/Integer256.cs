@@ -12,12 +12,16 @@
 
         public static Integer256 FromBytes(byte[] bytes)
         {
+            return FromBytes(bytes, 0, bytes.Length);
+        }
+
+        public static Integer256 FromBytes(byte[] bytes, int boffset, int lbytes)
+        {
             uint[] values = new uint[Size];
-            int lbytes = bytes.Length;
 
             for (int k = 0; k < lbytes; k++)
             {
-                byte val = bytes[lbytes - k - 1];
+                byte val = bytes[boffset + lbytes - k - 1];
                 int offset = k % 4;
                 int position = k / 4;
                 values[position] |= ((uint)val) << (offset * 8);
