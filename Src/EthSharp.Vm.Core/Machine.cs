@@ -25,8 +25,19 @@
             {
                 byte bytecode = bytecodes[pc++];
 
-                if (bytecode == (byte)Bytecodes.Push1)
-                    this.stack.Push(Integer256.FromBytes(bytecodes, pc++, 1));
+                switch (bytecode) {
+                    case (byte)Bytecodes.Push1:
+                        this.stack.Push(Integer256.FromBytes(bytecodes, pc++, 1));
+                        break;
+                    case (byte)Bytecodes.Push2:
+                        this.stack.Push(Integer256.FromBytes(bytecodes, pc, 2));
+                        pc += 2;
+                        break;
+                    case (byte)Bytecodes.Push3:
+                        this.stack.Push(Integer256.FromBytes(bytecodes, pc, 3));
+                        pc += 3;
+                        break;
+                }
             }
         }
     }

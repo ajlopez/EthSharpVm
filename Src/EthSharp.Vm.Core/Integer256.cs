@@ -35,6 +35,12 @@
             this.values = new uint[Size];
         }
 
+        public Integer256(uint value)
+        {
+            this.values = new uint[Size];
+            this.values[0] = value;
+        }
+
         internal Integer256(uint[] values)
         {
             this.values = values;
