@@ -27,6 +27,11 @@
             this.stack.Push(new Integer256(values));
         }
 
+        public void Push(Integer256 value)
+        {
+            this.stack.Push(value);
+        }
+
         public Integer256 Pop()
         {
             return this.stack.Pop();

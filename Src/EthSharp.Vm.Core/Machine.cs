@@ -26,7 +26,7 @@
                 byte bytecode = bytecodes[pc++];
 
                 if (bytecode == (byte)Bytecodes.Push1)
-                    this.stack.Push(bytecodes[pc++]);
+                    this.stack.Push(Integer256.FromBytes(bytecodes, pc++, 1));
             }
         }
     }
