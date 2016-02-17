@@ -14,7 +14,7 @@
         {
             var stack = new Stack();
 
-            stack.Push(0x01);
+            stack.Push(Integer256.FromBytes(new byte[] { 0x01 }));
 
             var result = stack.Pop();
 
@@ -27,7 +27,7 @@
         {
             var stack = new Stack();
 
-            stack.Push(256);
+            stack.Push(Integer256.FromBytes(new byte[] { 0x01, 0x00 }));
 
             var result = stack.Pop();
 
