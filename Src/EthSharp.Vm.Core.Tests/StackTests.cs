@@ -21,5 +21,18 @@
             Assert.IsNotNull(result);
             Assert.AreEqual(new Integer256().Add(1), result);
         }
+
+        [TestMethod]
+        public void PushTwoBytesAndPopInteger256()
+        {
+            var stack = new Stack();
+
+            stack.Push(256);
+
+            var result = stack.Pop();
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(new Integer256().Add(256), result);
+        }
     }
 }

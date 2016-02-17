@@ -18,6 +18,15 @@
             this.stack.Push(new Integer256(values));
         }
 
+        public void Push(ushort value)
+        {
+            uint[] values = new uint[Integer256.Size];
+
+            values[0] = value;
+
+            this.stack.Push(new Integer256(values));
+        }
+
         public Integer256 Pop()
         {
             return this.stack.Pop();
