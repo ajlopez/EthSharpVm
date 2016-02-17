@@ -136,6 +136,26 @@
             Assert.AreEqual(one1.GetHashCode(), one2.GetHashCode());
         }
 
+        [TestMethod]
+        public void FromBytes()
+        {
+            for (int k = 0; k < 32; k++)
+            {
+                var bytes = MakeBytes(k);
+                var value = Integer256.FromBytes(bytes);
+                AreEqual(value.ToBytes(), bytes);
+            }
+        }
+
+        private static byte[] MakeBytes(int k) {
+            byte[] bytes = new byte[k];
+
+            for (int n = 1; n <= k; n++)
+                bytes[k - n] = (byte)n;
+
+            return bytes;
+        }
+
         private static void AreEqual(byte[] values, byte[] expected, bool onefilled = false)
         {
             Assert.IsNotNull(values);

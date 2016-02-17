@@ -10,6 +10,22 @@
         internal const int Size = 8;
         private uint[] values;
 
+        public static Integer256 FromBytes(byte[] bytes)
+        {
+            uint[] values = new uint[Size];
+            int lbytes = bytes.Length;
+
+            for (int k = 0; k < lbytes; k++)
+            {
+                byte val = bytes[lbytes - k - 1];
+                int offset = k % 4;
+                int position = k / 4;
+                values[position] |= ((uint)val) << (offset * 8);
+            }
+
+            return new Integer256(values);
+        }
+
         public Integer256()
         {
             this.values = new uint[Size];
