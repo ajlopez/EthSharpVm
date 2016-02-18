@@ -14,6 +14,19 @@
             machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01 });
 
             Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        [TestMethod]
+        public void PushAndDup()
+        {
+            Machine machine = new Machine();
+
+            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Dup1 });
+
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(0, machine.Stack.Size);
         }
 
         [TestMethod]
@@ -25,6 +38,7 @@
 
             Assert.AreEqual(machine.Stack.Pop(), new Integer256(2));
             Assert.AreEqual(machine.Stack.Pop(), new Integer256(1));
+            Assert.AreEqual(0, machine.Stack.Size);
         }
 
         [TestMethod]
@@ -47,6 +61,7 @@
 
             Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 * 256 * 4 + 256 * 5 + 6));
             Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 * 256 * 1 + 256 * 2 + 3));
+            Assert.AreEqual(0, machine.Stack.Size);
         }
     }
 }

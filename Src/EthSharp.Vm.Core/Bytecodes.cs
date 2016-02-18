@@ -5,6 +5,8 @@
         Push1 = 0x60,
         Push2 = 0x61,
         Push3 = 0x62,
-        Push4 = 0x63
+        Push4 = 0x63,
+
+        Dup1 = 0x80
     }
 }

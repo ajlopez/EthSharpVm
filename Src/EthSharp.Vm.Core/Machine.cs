@@ -37,6 +37,9 @@
                         this.stack.Push(Integer256.FromBytes(bytecodes, pc, 3));
                         pc += 3;
                         break;
+                    case (byte)Bytecodes.Dup1:
+                        this.stack.Push(this.stack.Top());
+                        break;
                 }
             }
         }
