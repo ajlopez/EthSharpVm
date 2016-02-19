@@ -7,6 +7,11 @@
 
     public class Integer256
     {
+        public static Integer256 Zero = new Integer256();
+        public static Integer256 One = new Integer256(1);
+        public static Integer256 Two = new Integer256(2);
+        public static Integer256 Three = new Integer256(3);
+
         internal const int Size = 8;
         private uint[] values;
 

@@ -25,5 +25,10 @@
         {
             return this.stack.Pop();
         }
+
+        public Integer256 ElementAt(int index)
+        {
+            return this.stack.ElementAt(index);
+        }
     }
 }
