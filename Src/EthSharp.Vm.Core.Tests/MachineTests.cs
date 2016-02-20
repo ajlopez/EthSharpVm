@@ -13,7 +13,7 @@
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01 });
 
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
             Assert.AreEqual(0, machine.Stack.Size);
         }
 
@@ -49,8 +49,8 @@
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Push1, 0x02 });
 
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256(2));
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256(1));
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Two);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
             Assert.AreEqual(0, machine.Stack.Size);
         }
 
