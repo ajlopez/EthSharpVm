@@ -24,8 +24,21 @@
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Dup1 });
 
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256().Add(1));
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
+            Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        [TestMethod]
+        public void PushTwiceAndDup()
+        {
+            Machine machine = new Machine();
+
+            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Push1, 0x02, (byte)Bytecodes.Dup2 });
+
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Two);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
             Assert.AreEqual(0, machine.Stack.Size);
         }
 
