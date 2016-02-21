@@ -43,6 +43,9 @@
                     case (byte)Bytecodes.Dup2:
                         this.stack.Push(this.stack.ElementAt(1));
                         break;
+                    case (byte)Bytecodes.Dup3:
+                        this.stack.Push(this.stack.ElementAt(2));
+                        break;
                 }
             }
         }

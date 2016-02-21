@@ -8,6 +8,7 @@
         Push4 = 0x63,
 
         Dup1 = 0x80,
-        Dup2 = 0x81
+        Dup2 = 0x81,
+        Dup3 = 0x02
     }
 }
