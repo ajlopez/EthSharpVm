@@ -25,7 +25,8 @@
             {
                 byte bytecode = bytecodes[pc++];
 
-                switch (bytecode) {
+                switch (bytecode) 
+                {
                     case (byte)Bytecodes.Push1:
                         this.stack.Push(Integer256.FromBytes(bytecodes, pc++, 1));
                         break;

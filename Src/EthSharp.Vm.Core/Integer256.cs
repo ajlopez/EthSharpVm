@@ -7,13 +7,30 @@
 
     public class Integer256
     {
+        internal const int Size = 8;
+
         private static Integer256 zero = new Integer256();
         private static Integer256 one = new Integer256(1);
         private static Integer256 two = new Integer256(2);
         private static Integer256 three = new Integer256(3);
 
-        internal const int Size = 8;
         private uint[] values;
+
+        public Integer256()
+        {
+            this.values = new uint[Size];
+        }
+
+        public Integer256(uint value)
+        {
+            this.values = new uint[Size];
+            this.values[0] = value;
+        }
+
+        internal Integer256(uint[] values)
+        {
+            this.values = values;
+        }
 
         public static Integer256 Zero { get { return zero; } }
 
@@ -41,22 +58,6 @@
             }
 
             return new Integer256(values);
-        }
-
-        public Integer256()
-        {
-            this.values = new uint[Size];
-        }
-
-        public Integer256(uint value)
-        {
-            this.values = new uint[Size];
-            this.values[0] = value;
-        }
-
-        internal Integer256(uint[] values)
-        {
-            this.values = values;
         }
 
         public Integer256 Negate()

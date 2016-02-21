@@ -75,7 +75,7 @@
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push2, 0x01, 0x02, (byte)Bytecodes.Push2, 0x03, 0x04 });
 
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 * 3 + 4));
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 3) + 4));
             Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 + 2));
         }
 
@@ -86,8 +86,8 @@
 
             machine.Execute(new byte[] { (byte)Bytecodes.Push3, 0x01, 0x02, 0x03, (byte)Bytecodes.Push3, 0x04, 0x05, 0x06 });
 
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 * 256 * 4 + 256 * 5 + 6));
-            Assert.AreEqual(machine.Stack.Pop(), new Integer256(256 * 256 * 1 + 256 * 2 + 3));
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 4) + (256 * 5) + 6));
+            Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 1) + (256 * 2) + 3));
             Assert.AreEqual(0, machine.Stack.Size);
         }
     }

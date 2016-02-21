@@ -147,7 +147,8 @@
             }
         }
 
-        private static byte[] MakeBytes(int k) {
+        private static byte[] MakeBytes(int k) 
+        {
             byte[] bytes = new byte[k];
 
             for (int n = 1; n <= k; n++)
