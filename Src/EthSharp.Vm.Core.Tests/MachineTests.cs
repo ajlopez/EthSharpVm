@@ -57,6 +57,21 @@
         }
 
         [TestMethod]
+        public void PushFourValuesAndDup()
+        {
+            Machine machine = new Machine();
+
+            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x00, (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Push1, 0x02, (byte)Bytecodes.Push1, 0x03, (byte)Bytecodes.Dup4 });
+
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Three);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Two);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
+            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
+            Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        [TestMethod]
         public void PushByteTwice()
         {
             Machine machine = new Machine();
