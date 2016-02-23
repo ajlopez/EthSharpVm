@@ -22,13 +22,7 @@
         [TestMethod]
         public void PushAndDup()
         {
-            Machine machine = new Machine();
-
-            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Dup1 });
-
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
-            Assert.AreEqual(0, machine.Stack.Size);
+            PushDupPop(1);
         }
 
         [TestMethod]
@@ -40,30 +34,13 @@
         [TestMethod]
         public void PushThreeValuesAndDup()
         {
-            Machine machine = new Machine();
-
-            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x00, (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Push1, 0x02, (byte)Bytecodes.Dup3 });
-
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Two);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
-            Assert.AreEqual(0, machine.Stack.Size);
+            PushDupPop(3);
         }
 
         [TestMethod]
         public void PushFourValuesAndDup()
         {
-            Machine machine = new Machine();
-
-            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x00, (byte)Bytecodes.Push1, 0x01, (byte)Bytecodes.Push1, 0x02, (byte)Bytecodes.Push1, 0x03, (byte)Bytecodes.Dup4 });
-
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Three);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Two);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.Zero);
-            Assert.AreEqual(0, machine.Stack.Size);
+            PushDupPop(4);
         }
 
         [TestMethod]

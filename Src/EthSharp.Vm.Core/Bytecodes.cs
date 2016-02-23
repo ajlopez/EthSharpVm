@@ -9,7 +9,7 @@
 
         Dup1 = 0x80,
         Dup2 = 0x81,
-        Dup3 = 0x02,
-        Dup4 = 0x03
+        Dup3 = 0x82,
+        Dup4 = 0x83
     }
 }
