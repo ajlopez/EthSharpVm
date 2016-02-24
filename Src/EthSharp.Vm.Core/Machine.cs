@@ -39,16 +39,22 @@
                         pc += 3;
                         break;
                     case (byte)Bytecodes.Dup1:
-                        this.stack.Push(this.stack.Top());
-                        break;
                     case (byte)Bytecodes.Dup2:
-                        this.stack.Push(this.stack.ElementAt(1));
-                        break;
                     case (byte)Bytecodes.Dup3:
-                        this.stack.Push(this.stack.ElementAt(2));
-                        break;
                     case (byte)Bytecodes.Dup4:
-                        this.stack.Push(this.stack.ElementAt(3));
+                    case (byte)Bytecodes.Dup5:
+                    case (byte)Bytecodes.Dup6:
+                    case (byte)Bytecodes.Dup7:
+                    case (byte)Bytecodes.Dup8:
+                    case (byte)Bytecodes.Dup9:
+                    case (byte)Bytecodes.Dup10:
+                    case (byte)Bytecodes.Dup11:
+                    case (byte)Bytecodes.Dup12:
+                    case (byte)Bytecodes.Dup13:
+                    case (byte)Bytecodes.Dup14:
+                    case (byte)Bytecodes.Dup15:
+                    case (byte)Bytecodes.Dup16:
+                        this.stack.Push(this.stack.ElementAt(bytecode - (byte)Bytecodes.Dup1));
                         break;
                 }
             }

@@ -44,6 +44,13 @@
         }
 
         [TestMethod]
+        public void PushAllValuesAndDup()
+        {
+            for (uint k = 1; k <= 16; k++)
+                PushDupPop(k);
+        }
+
+        [TestMethod]
         public void PushByteTwice()
         {
             Machine machine = new Machine();
