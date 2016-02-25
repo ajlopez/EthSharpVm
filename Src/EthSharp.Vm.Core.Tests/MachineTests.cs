@@ -11,12 +11,7 @@
         [TestMethod]
         public void PushByte()
         {
-            Machine machine = new Machine();
-
-            machine.Execute(new byte[] { (byte)Bytecodes.Push1, 0x01 });
-
-            Assert.AreEqual(machine.Stack.Pop(), Integer256.One);
-            Assert.AreEqual(0, machine.Stack.Size);
+            PushPop(new byte[] { 0x01 });
         }
 
         [TestMethod]
@@ -83,6 +78,23 @@
             Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 4) + (256 * 5) + 6));
             Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 1) + (256 * 2) + 3));
             Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        private static void PushPop(byte[] bytes)
+        {
+            IList<Byte> bs = new List<byte>();
+
+            bs.Add((byte)(Bytecodes.Push1 + bytes.Length - 1));
+
+            foreach (byte b in bytes)
+                bs.Add(b);
+
+            Machine machine = new Machine();
+
+            machine.Execute(bs.ToArray());
+
+            Assert.AreEqual(1, machine.Stack.Size);
+            Assert.AreEqual(Integer256.FromBytes(bytes), machine.Stack.Pop());
         }
 
         private static void PushDupPop(uint times)
