@@ -15,6 +15,13 @@
         }
 
         [TestMethod]
+        public void PushBytes()
+        {
+            for (int k = 1; k <= 32; k++)
+                PushPop(k);
+        }
+
+        [TestMethod]
         public void PushAndDup()
         {
             PushDupPop(1);
@@ -78,6 +85,16 @@
             Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 4) + (256 * 5) + 6));
             Assert.AreEqual(machine.Stack.Pop(), new Integer256((256 * 256 * 1) + (256 * 2) + 3));
             Assert.AreEqual(0, machine.Stack.Size);
+        }
+
+        private static void PushPop(int times)
+        {
+            byte[] bytes = new byte[times];
+
+            for (int k = 0; k < times; k++)
+                bytes[k] = (byte)(k + 1);
+
+            PushPop(bytes);
         }
 
         private static void PushPop(byte[] bytes)
