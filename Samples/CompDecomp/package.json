@@ -1,0 +1,15 @@
+{
+  "name": "comp-decomp",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Solidity compiler/decompiler",
+  "main": "decomp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "solc": "^0.3.5"
+  }
+}
